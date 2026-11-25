@@ -1,18 +1,123 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ali Demirhan Pusat · CM-501</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sea life</title>
+  <link rel="stylesheet" href="css/style.css">
 </head>
-<header>
-<nav>
-    <a href="index.html">Home</a>
-</nav>
-</header>
-
-
 <body>
-    <p>I wanna learn about effective web design that is accesible on most devices  </p>
+  <a href="#main" class="skip-link">Skip to content</a>
+
+  <header class="site-header">
+    <div class="site-header__inner">
+      <nav class="site-nav" aria-label="Main">
+        <ul>
+          <li><a href="index.html" aria-current="page">Home</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="sources.html">Sources</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <div class="intro">
+      <h1>Sea life</h1>
+    </div>
+
+    <section id="sunlight" class="zone zone--sunlight" aria-labelledby="sunlight-heading">
+      <div class="zone__inner">
+        <div>
+          <h2 id="sunlight-heading">Sunlight zone <span class="zone__depth">0–200 m</span></h2>
+        </div>
+        <div class="zone__species">
+          <figure class="species" id="humpback-whale">
+            <img src="img/Humpback_Whale.png" alt="Humpback whale">
+            <figcaption>
+              <h3>Humpback whale</h3>
+              <p class="species__latin">Megaptera novaeangliae</p>
+              <p>Humpbacks have their own language that is still being worked on to be decypherd.</p>
+            </figcaption>
+          </figure>
+          <figure class="species" id="clownfish">
+            <img src="img/Clownfish.png" alt="Clownfish">
+            <figcaption>
+              <h3>Clownfish</h3>
+              <p class="species__latin">Amphiprion ocellaris</p>
+              <p>Every clownfish starts life as a male. The biggest fish in a group turns into a female.</p>
+            </figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <section id="twilight" class="zone zone--twilight" aria-labelledby="twilight-heading">
+      <div class="zone__inner">
+        <div>
+          <h2 id="twilight-heading">Twilight zone <span class="zone__depth">200–1,000 m</span></h2>
+        </div>
+        <div class="zone__species">
+          <figure class="species" id="swordfish">
+            <img src="img/swordfish.png" alt="Swordfish">
+            <figcaption>
+              <h3>Swordfish</h3>
+              <p class="species__latin">Xiphias gladius</p>
+              <p>A swordfish warms its eyes and brain so it can see better in cold, dark water.</p>
+            </figcaption>
+          </figure>
+          <figure class="species" id="giant-squid">
+            <img src="img/giant_squid.png" alt="Giant squid">
+            <figcaption>
+              <h3>Giant squid</h3>
+              <p class="species__latin">Architeuthis dux</p>
+              <p>The giant squid has the biggest eyes of any animal, about the size of a human head.</p>
+            </figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <section id="midnight" class="zone zone--midnight" aria-labelledby="midnight-heading">
+      <div class="zone__inner">
+        <div>
+          <h2 id="midnight-heading">Midnight zone <span class="zone__depth">1,000–4,000 m</span></h2>
+        </div>
+        <div class="zone__species">
+          <figure class="species" id="anglerfish">
+            <img src="img/anglerfish.png" alt="Humpback anglerfish">
+            <figcaption>
+              <h3>Humpback anglerfish</h3>
+              <p class="species__latin">Melanocetus johnsonii</p>
+              <p>The glowing lure on its head is lit up by bacteria that live inside it.</p>
+            </figcaption>
+          </figure>
+          <figure class="species" id="gulper-eel">
+            <img src="img/pelican_eel.png" alt="Gulper eel">
+            <figcaption>
+              <h3>Gulper eel</h3>
+              <p class="species__latin">Eurypharynx pelecanoides</p>
+              <p>Its mouth is much bigger than its body, so it can swallow prey larger than itself.</p>
+            </figcaption>
+          </figure>
+          <figure class="species" id="giant-isopod">
+            <img src="img/isopod.png" alt="Giant isopod">
+            <figcaption>
+              <h3>Giant isopod</h3>
+              <p class="species__latin">Bathynomus giganteus</p>
+              <p>It lives on the sea floor. One giant isopod in a Japanese aquarium went more than five years without eating.</p>
+            </figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="site-footer__inner">
+      <a class="button" href="#main">Back to top</a>
+      <p>Photo credits and facts: see <a href="sources.html">Sources</a>.</p>
+    </div>
+  </footer>
 </body>
 </html>

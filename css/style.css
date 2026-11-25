@@ -1,0 +1,204 @@
+/* =========================================================
+   Sea life · style.css
+   One stylesheet for every page. All values come from the
+   tokens in section 1 (documented in styleguide.html).
+   ========================================================= */
+
+/* ---------- 1 · TOKENS ---------- */
+:root {
+  /* colours */
+  --color-text-dark:  #0b1f2e; /* text on light backgrounds */
+  --color-text-light: #e8f1f8; /* text on dark backgrounds */
+  --color-sunlight:   #78cde2; /* page background + sunlight zone */
+  --color-twilight:   #043f77; /* brand colour + twilight zone */
+  --color-midnight:   #0d0c08; /* surface: header, footer, midnight zone */
+
+  /* typography */
+  --font-body: system-ui, sans-serif;
+  --step-0: 1rem;                                   /* body text */
+  --step-1: clamp(1.2rem, 1.1rem + 0.5vw, 1.5rem);  /* h3 */
+  --step-2: clamp(1.5rem, 1.3rem + 1vw, 2.25rem);   /* h2 */
+  --step-3: clamp(2rem, 1.6rem + 2.5vw, 3.5rem);    /* h1 */
+
+  /* spacing */
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 1rem;
+  --space-4: 2rem;
+  --space-5: 4rem;
+
+  /* sizes */
+  --measure: 65ch;          /* readable line length */
+  --content-width: 72rem;   /* max width of the content */
+
+  /* border: takes the text colour, so it works on light and dark */
+  --border-width: 0.125rem;
+  --border: var(--border-width) solid currentColor;
+}
+
+/* ---------- 2 · BASE ---------- */
+*, *::before, *::after { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  display: grid;                          /* page layout: header / main / footer */
+  grid-template-rows: auto 1fr auto;
+  font-family: var(--font-body);
+  font-size: var(--step-0);
+  line-height: 1.5;
+  color: var(--color-text-dark);
+  background: var(--color-sunlight);
+}
+
+h1, h2, h3 { line-height: 1.2; margin: 0 0 var(--space-3); }
+h1 { font-size: var(--step-3); }
+h2 { font-size: var(--step-2); }
+h3 { font-size: var(--step-1); }
+
+p { max-width: var(--measure); margin: 0 0 var(--space-3); }
+
+a { color: inherit; }
+
+img {
+  display: block;
+  max-width: 100%;   /* photos never get wider than their column */
+  height: auto;
+}
+
+/* focus: the browser's default focus ring is used (no custom colour) */
+
+/* skip link: hidden until it gets keyboard focus */
+.skip-link {
+  position: absolute;
+  left: var(--space-3);
+  top: -100%;
+  padding: var(--space-2) var(--space-3);
+  background: var(--color-sunlight);
+  color: var(--color-text-dark);
+  border: var(--border);
+}
+.skip-link:focus { top: var(--space-3); }
+
+/* ---------- 3 · COMPONENTS ---------- */
+
+/* 3.1 Site navigation */
+.site-header,
+.site-footer {
+  background: var(--color-midnight);
+  color: var(--color-text-light);
+  padding: var(--space-3);
+}
+
+.site-header__inner,
+.site-footer__inner {
+  max-width: var(--content-width);
+  margin-inline: auto;
+}
+
+.site-nav ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;     /* mobile: stacked */
+  gap: var(--space-2);
+}
+
+.site-nav a {
+  display: inline-block;
+  padding: var(--space-1) 0;
+  text-decoration: none;
+}
+.site-nav a:hover { text-decoration: underline; }
+.site-nav a[aria-current="page"] {
+  font-weight: 700;
+  text-decoration: underline;
+}
+
+/* 3.2 Button (also used for links that look like buttons):
+   no border, always underlined so it is clearly clickable */
+.button {
+  display: inline-block;
+  padding: var(--space-2) 0;            /* bigger click area, text lines up on the left */
+  border: 0;
+  background: transparent;
+  color: inherit;
+  font: inherit;
+  font-weight: 600;
+  text-decoration: underline;
+  text-underline-offset: var(--space-1);
+  cursor: pointer;
+}
+.button:hover { text-decoration-thickness: var(--border-width); }  /* thicker underline */
+.button:disabled { opacity: 0.5; cursor: not-allowed; text-decoration: none; }
+
+/* 3.3 Species (photo with text underneath) */
+.species { margin: 0; }
+.species figcaption { padding-top: var(--space-3); }
+.species h3 { margin-bottom: var(--space-1); }
+.species__latin { font-style: italic; margin-bottom: var(--space-2); }
+
+/* ---------- 4 · PAGE SECTIONS ---------- */
+
+.intro {
+  max-width: var(--content-width);
+  margin-inline: auto;
+  padding: var(--space-5) var(--space-3) var(--space-4);
+}
+
+.zone { padding: var(--space-5) var(--space-3); }
+
+.zone__inner {
+  max-width: var(--content-width);
+  margin-inline: auto;
+  display: grid;
+  gap: var(--space-4);
+}
+
+.zone__depth {
+  display: block;
+  font-size: var(--step-0);
+  font-weight: 400;
+}
+
+.zone__species {
+  display: grid;
+  gap: var(--space-4);
+}
+
+/* zone colours: the page gets darker as you go deeper */
+.zone--sunlight { background: var(--color-sunlight); color: var(--color-text-dark); }
+.zone--twilight { background: var(--color-twilight); color: var(--color-text-light); }
+.zone--midnight { background: var(--color-midnight); color: var(--color-text-light); }
+
+.site-footer p { margin: var(--space-3) 0 0; }
+
+/* simple text pages (about, sources) */
+.page {
+  max-width: var(--content-width);
+  margin-inline: auto;
+  padding: var(--space-5) var(--space-3);
+}
+
+.page h2 { margin-top: var(--space-5); }  /* clear gap before each new part */
+
+.page ul {
+  max-width: var(--measure);      /* same 65ch line length as paragraphs */
+  padding-left: var(--space-4);   /* bullets line up under the heading text */
+}
+
+.page li { margin-bottom: var(--space-2); }  /* space between list items */
+
+/* ---------- 5 · BREAKPOINTS (mobile first) ---------- */
+
+/* 40rem: room for two photos side by side */
+@media (min-width: 40rem) {
+  .site-nav ul { flex-direction: row; gap: var(--space-4); }
+  .zone__species { grid-template-columns: 1fr 1fr; }
+}
+
+/* 64rem: room for the zone heading next to the photos */
+@media (min-width: 64rem) {
+  .zone__inner { grid-template-columns: 1fr 2fr; gap: var(--space-5); }
+}
